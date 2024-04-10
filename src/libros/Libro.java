@@ -4,12 +4,14 @@ public class Libro {
    // attributes
    private String titulo;
    private boolean prestado;
+   private static int numLibro=0;
 
    // constructor
    public Libro(String titulo) {
       super();
       this.titulo = titulo;
       prestado = false;
+      numLibro++;
    }
 
    // getters y setters
@@ -17,7 +19,7 @@ public class Libro {
       return titulo;
    }
 
-   public void setTitulo(String titulo) {
+   public void setTitulo(String titulo, int nombre) {
       this.titulo = titulo;
    }
 
@@ -51,5 +53,7 @@ public class Libro {
    public boolean equals(Object obj) {
       return (this.titulo.equals(((Libro)obj).getTitulo()));
    }
+
+
 
 } // end of Libro
