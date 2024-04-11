@@ -4,6 +4,8 @@ public class Herencia {
    public static void main(String[] args) {
       // crear un objeto AAA.
       AAA aaa = new AAA();
+      System.out.println(aaa);
+      
    }
 }
 
