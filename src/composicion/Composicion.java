@@ -3,98 +3,161 @@ package composicion;
 import java.util.ArrayList;
 import java.util.List;
 
+import composicion.Hotel.Habitacion;
+
 public class Composicion {
 
-    class Hotel {
+    public static void main(String[] args) {
 
-        private List<Habitacion> misHabitaciones = new ArrayList<Habitacion>();
-        private Recepcion miRecepcion;
+        Hotel miHotel = new Hotel();
 
-        public Hotel() {
+        // Recepcion mRecepcion = new Recepcion();
 
-        }
+        // Habitacion mHabitacion = new Habitacion();
 
-        public List<Habitacion> getMisHabitaciones() {
-            return misHabitaciones;
+        for (int i = 0; i < 5; i++) {
 
-        }
-
-        public void setMiHabitaciones(List<Habitacion> misHabitaciones) {
-            this.misHabitaciones = misHabitaciones;
-
-        }
-
-        public Recepcion getMiRecepcion() {
-            return miRecepcion;
-
-        }
-
-        public void setMiRecepcion(Recepcion miRecepcion) {
-            this.miRecepcion = miRecepcion;
-
-        }
-
-        class Habitacion {
-
-            private int ancho;
-            private int largo;
-
-            public Habitacion() {
-
-            }
-
-            public int getAncho() {
-                return ancho;
-
-            }
-
-            public void setAncho(int ancho) {
-                this.ancho = ancho;
-
-            }
-
-            public int getLargo() {
-                return largo;
-
-            }
-
-            public void setLargo(int largo) {
-                this.largo = largo;
-
-            }
+            miHotel.anadirHabitacion();
+            miHotel.getMisHabitaciones().get(i).setAncho(3);
+            miHotel.getMisHabitaciones().get(i).setLargo(4);
 
         }
 
     }
 
-    class Recepcion {
+}
 
-        private int ancho;
-        private int largo;
+class Hotel {
 
-        public Recepcion() {
+    private List<Habitacion> misHabitaciones = new ArrayList<Habitacion>();
+    private Recepcion miRecepcion;
+
+    public Hotel() {
+        this.misHabitaciones = new ArrayList<>();
+        this.miRecepcion = new Recepcion();
+
+    }
+
+    public List<Habitacion> getMisHabitaciones() {
+        return misHabitaciones;
+
+    }
+
+    public void setMiHabitaciones(List<Habitacion> misHabitaciones) {
+        this.misHabitaciones = misHabitaciones;
+
+    }
+
+    public Recepcion getMiRecepcion() {
+        return miRecepcion;
+
+    }
+
+    public void setMiRecepcion(Recepcion miRecepcion) {
+        this.miRecepcion = miRecepcion;
+
+    }
+
+    public void anadirHabitacion() {
+
+        misHabitaciones.add(new Habitacion());
+
+    }
+
+    class Habitacion extends Estancia {
+
+        private boolean cuartoBano;
+
+        public Habitacion() {
+            super();
+            this.cuartoBano = false;
 
         }
 
-        public int getAncho() {
-            return ancho;
+        public boolean isCuartoBano() {
+            return cuartoBano;
 
         }
 
-        public void setAncho(int ancho) {
-            this.ancho = ancho;
+        public void setCuartoBano(boolean cuartoBano) {
+            this.cuartoBano = cuartoBano;
 
         }
 
-        public int getLargo() {
-            return largo;
+        @Override
+        public void setAncho(int ancho) { 
+            super.setAncho(ancho + 1);
+            
+        }
+
+    }
+
+}
+
+class Recepcion extends Estancia {
+
+    private int altura;
+
+    public Recepcion() {
+        super();
+        this.altura = 0;
+
+    }
+
+    public int getAltura() {
+        return altura;
+
+    }
+
+    public void setAltura(int altura) {
+        this.altura = altura;
+
+    }
+
+    public void entrada() {
+        System.out.println("Bienvenido al hotel");
+
+    }
+
+    public void entrada(String idioma) {
+
+        if (idioma == "Inglés") {
+            System.out.println("Hello, Welcome to the Hotel");
 
         }
 
-        public void setLargo(int largo) {
-            this.largo = largo;
+    }
 
-        }
+}
+
+class Estancia {
+
+    private int ancho;
+    private int largo;
+
+    public Estancia() {
+        this.ancho = 0;
+        this.largo = 0;
+
+    }
+
+    public int getAncho() {
+        return ancho;
+
+    }
+
+    public void setAncho(int ancho) {
+        this.ancho = ancho;
+
+    }
+
+    public int getLargo() {
+        return largo;
+
+    }
+
+    public void setLargo(int largo) {
+        this.largo = largo;
 
     }
 
